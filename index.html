@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>5/25 sample</title>
+</head>
+
+<body>
+	<script>
+
+		class NumberClass {
+			constructor(num1, num2) {
+				this.num1 = num1;
+				this.num2 = num2;
+			}
+
+			get num1() {
+				console.log('get');
+				return this._num1;
+			}
+
+			set num1(newNum1) {
+				console.log('set');
+				this._num1 = newNum1;
+			}
+
+			get num2() {
+				console.log('get');
+				return this._num2;
+			}
+
+			set num2(newNum2) {
+				console.log('set');
+				this._num2 = newNum2;
+			}
+
+			AddNum() {
+				return this.num1 + this.num2;
+			}
+
+			static hello(){
+				console.log('Hello!!');
+			}
+
+			thankYou(){
+				console.log('ThankYou!!');
+			}
+		}
+
+		NumberClass.hello();
+		// NumberClass.thankYou(); // 実行できないことを確認
+
+		// class初期化時にもsetメソッドは実行される
+		const numberclass = new NumberClass(1,2);
+		console.log(numberclass.num1);
+		console.log(numberclass.num2);
+		numberclass.num1 = 3;
+		numberclass.num2 = 4;
+		console.log(numberclass.num1);
+		console.log(numberclass.num2);
+		// _num1と_num2の数値が足された数値を取る事から
+		// getメソッドが実行されている
+		console.log(numberclass.AddNum());
+		numberclass.thankYou();
+		// numberclass.hello(); // インスタンス化後は使用できない
+
+	</script>
+</body>
+
+</html>
